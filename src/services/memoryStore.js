@@ -1,4 +1,4 @@
-class MemoryStore {
+﻿class MemoryStore {
   constructor() {
     this.memories = [];
     try {
@@ -29,7 +29,7 @@ class MemoryStore {
     const items = memories.map((m, i) =>
       `[Lesson Memory ${i + 1} | ${(m.similarity * 100).toFixed(0)}% relevant]: ${m.content.slice(0, 300)}`
     ).join('\n');
-    return `Here are relevant past learning sessions from this student:\n${items}\n\nUse these to personalize your teaching — reference their past struggles and build on what they already know.`;
+    return `Here are relevant past learning sessions from this student:\n${items}\n\nUse these to personalize your teaching - reference their past struggles and build on what they already know.`;
   }
 
   generateEmbedding(text, dim = 256) {

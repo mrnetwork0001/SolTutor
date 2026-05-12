@@ -15,7 +15,7 @@ const TOPICS = [
     label: 'Basics',
     icon: BookOpen,
     description: 'Variables, Types, Functions',
-    prompt: 'Teach me about Solidity basics — variables, data types, and functions. Start with the fundamentals.',
+    prompt: 'Teach me about Solidity basics - variables, data types, and functions. Start with the fundamentals.',
   },
   {
     id: 'storage',
@@ -29,7 +29,7 @@ const TOPICS = [
     label: 'Events & Logging',
     icon: Zap,
     description: 'Event emission, indexed params',
-    prompt: 'Teach me about Events in Solidity — how to declare, emit, and listen to them.',
+    prompt: 'Teach me about Events in Solidity - how to declare, emit, and listen to them.',
   },
   {
     id: 'modifiers',
@@ -43,7 +43,7 @@ const TOPICS = [
     label: 'Security Patterns',
     icon: Shield,
     description: 'Reentrancy, overflow, exploits',
-    prompt: 'Teach me about Reentrancy attacks in Solidity — how they work and how to prevent them.',
+    prompt: 'Teach me about Reentrancy attacks in Solidity - how they work and how to prevent them.',
   },
   {
     id: 'gas',
@@ -78,7 +78,7 @@ const TOPICS = [
     label: 'DeFi Patterns',
     icon: TrendingUp,
     description: 'AMMs, lending, yield',
-    prompt: 'Teach me about common DeFi smart contract patterns — AMMs, lending pools, and yield strategies.',
+    prompt: 'Teach me about common DeFi smart contract patterns - AMMs, lending pools, and yield strategies.',
   },
 ];
 
@@ -279,7 +279,7 @@ export default function Sidebar({
               {isLocked && (
                 <button className="upgrade-btn" onClick={onShowPaywall}>
                   <Sparkles size={14} />
-                  <span>Subscribe — {SUBSCRIPTION_PRICE_DISPLAY}/mo</span>
+                  <span>Subscribe - {SUBSCRIPTION_PRICE_DISPLAY}/mo</span>
                 </button>
               )}
             </div>
@@ -317,7 +317,7 @@ export default function Sidebar({
           <span>{memoryCount} lessons stored on 0G</span>
         </div>
         <a
-          href="https://github.com/mrnetwork0001/MemoriaDA"
+          href="https://memoriada.xyz"
           target="_blank"
           rel="noopener noreferrer"
           className="sidebar-powered-by"

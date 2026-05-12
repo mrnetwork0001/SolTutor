@@ -1,5 +1,5 @@
-// ============================================================
-// SolTutor — Access Service (Frontend Contract Interaction)
+﻿// ============================================================
+// SolTutor - Access Service (Frontend Contract Interaction)
 // Reads subscription status from SolTutorAccess contract
 // ============================================================
 

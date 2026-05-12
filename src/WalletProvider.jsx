@@ -1,10 +1,10 @@
-// ============================================================
-// SolTutor — Wallet Provider (RainbowKit + 0G Galileo Testnet)
+﻿// ============================================================
+// SolTutor - Wallet Provider (RainbowKit + 0G Galileo Testnet)
 // ============================================================
 
 import '@rainbow-me/rainbowkit/styles.css';
 import React from 'react';
-import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -41,10 +41,10 @@ export default function WalletProvider({ children }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          theme={darkTheme({
-            accentColor: '#bc8cff',
+          theme={lightTheme({
+            accentColor: '#7C3AED',
             accentColorForeground: 'white',
-            borderRadius: 'medium',
+            borderRadius: 'large',
             overlayBlur: 'small',
           })}
         >

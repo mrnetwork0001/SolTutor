@@ -1,0 +1,69 @@
+/* ═══════════════════════════════════════════════════
+   SolTutor — High-Fidelity Claymorphism Tokens & Base
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --clay-canvas: #F4F1FA;
+  --clay-card: rgba(255,255,255,0.7);
+  --clay-card-solid: #fff;
+  --clay-fg: #332F3A;
+  --clay-muted: #635F69;
+  --clay-accent: #7C3AED;
+  --clay-accent-light: #A78BFA;
+  --clay-accent-alt: #DB2777;
+  --clay-tertiary: #0EA5E9;
+  --clay-success: #10B981;
+  --clay-warning: #F59E0B;
+  --clay-danger: #EF4444;
+  --font-heading: 'Nunito', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --r-sm: 20px; --r-md: 24px; --r-lg: 32px; --r-xl: 48px;
+  --sidebar-width: 300px;
+  --topbar-height: 64px;
+  --shadow-card: 16px 16px 32px rgba(160,150,180,0.18), -10px -10px 24px rgba(255,255,255,0.9), inset 6px 6px 12px rgba(139,92,246,0.03), inset -6px -6px 12px rgba(255,255,255,1);
+  --shadow-btn: 8px 8px 20px rgba(139,92,246,0.25), -6px -6px 14px rgba(255,255,255,0.4), inset 3px 3px 6px rgba(255,255,255,0.4), inset -3px -3px 6px rgba(0,0,0,0.08);
+  --shadow-pressed: inset 8px 8px 16px #d9d4e3, inset -8px -8px 16px #ffffff;
+  --shadow-surface: 20px 20px 40px #cdc6d9, -20px -20px 40px #ffffff, inset 6px 6px 12px rgba(139,92,246,0.04), inset -6px -6px 12px rgba(255,255,255,0.7);
+  --transition: 250ms ease;
+  --transition-fast: 150ms ease;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%}
+body{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--clay-fg);background:var(--clay-canvas);-webkit-font-smoothing:antialiased}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#cdc6d9;border-radius:20px}
+::-webkit-scrollbar-thumb:hover{background:#a8a0b4}
+
+/* ── Animations ─────────────────── */
+@keyframes clay-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(2deg)}}
+@keyframes clay-float-alt{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(-2deg)}}
+@keyframes clay-float-slow{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-30px) rotate(5deg)}}
+@keyframes clay-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes floatDrift{0%{transform:translateY(0) translateX(0) rotate(0deg)}25%{transform:translateY(-30px) translateX(15px) rotate(1deg)}50%{transform:translateY(-10px) translateX(-10px) rotate(-0.5deg)}75%{transform:translateY(-40px) translateX(20px) rotate(0.5deg)}100%{transform:translateY(0) translateX(0) rotate(0deg)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes progressGlow{0%,100%{opacity:0.3}50%{opacity:1}}
+@keyframes paywallFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes paywallSlideUp{from{opacity:0;transform:translateY(24px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes accentShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes successPulse{0%{transform:scale(0.8);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes messageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(124,58,237,0.1)}50%{box-shadow:0 0 40px rgba(124,58,237,0.25)}}
+@keyframes pro-glow{0%,100%{box-shadow:0 0 10px rgba(124,58,237,0.15)}50%{box-shadow:0 0 24px rgba(124,58,237,0.3)}}
+
+.spin{animation:spin 1s linear infinite}
+.animation-delay-2000{animation-delay:2s}
+.animation-delay-4000{animation-delay:4s}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+/* ── Clay Blobs ─────────────────── */
+.clay-blobs{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:0}
+.clay-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12}
+.clay-blob--violet{width:55vh;height:55vh;background:#8B5CF6;top:-8%;left:-5%;animation:clay-float 8s ease-in-out infinite}
+.clay-blob--pink{width:50vh;height:50vh;background:#EC4899;top:25%;right:-8%;animation:clay-float-alt 10s ease-in-out infinite}
+.clay-blob--blue{width:45vh;height:45vh;background:#0EA5E9;bottom:-5%;left:30%;animation:clay-float 12s ease-in-out infinite;animation-delay:2s}

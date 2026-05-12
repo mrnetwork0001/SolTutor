@@ -1,5 +1,5 @@
-// ============================================================
-// SolTutor — Paywall Modal
+﻿// ============================================================
+// SolTutor - Paywall Modal
 // Full-screen lock when free memory limit reached.
 // Two-step flow: Connect Wallet → Pay to Subscribe
 // ============================================================
@@ -201,7 +201,7 @@ export default function PaywallModal({ memoryCount, freeLimit, onUpgradeComplete
                 </div>
                 <ul className="paywall-features">
                   <li><CheckCircle2 size={14} /> Unlimited permanent memory recall</li>
-                  <li><CheckCircle2 size={14} /> On-chain verified subscription</li>
+                  <li><CheckCircle2 size={14} /> Onchain verified subscription</li>
                   <li><CheckCircle2 size={14} /> MemoriaDA-secured learning data</li>
                   <li><CheckCircle2 size={14} /> Stackable renewals</li>
                 </ul>
@@ -219,7 +219,7 @@ export default function PaywallModal({ memoryCount, freeLimit, onUpgradeComplete
                 ) : (
                   <>
                     <Sparkles size={16} />
-                    <span>Subscribe — {SUBSCRIPTION_PRICE_DISPLAY}</span>
+                    <span>Subscribe - {SUBSCRIPTION_PRICE_DISPLAY}</span>
                     <ArrowRight size={16} />
                   </>
                 )}

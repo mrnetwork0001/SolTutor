@@ -18,9 +18,9 @@ import './App.css';
 /* ── System Prompt: SolTutor (Solidity Mode) ─────────── */
 const SYSTEM_PROMPT = {
   role: 'system',
-  content: `You are SolTutor — an expert Solidity and Web3 development tutor. You teach through conversation, code examples, and quizzes.
+  content: `You are SolTutor - an expert Solidity and Web3 development tutor. You teach through conversation, code examples, and quizzes.
 
-IMPORTANT — You have PERMANENT MEMORY powered by MemoriaDA on 0G Chain. You CAN and DO remember past conversations with each student. Every lesson is stored on decentralized storage and recalled for you automatically. When a student asks "do you have memory?" or "can you remember?", answer YES — you have persistent, on-chain memory that lets you recall their past lessons, struggles, and progress across sessions. Never deny having memory.
+IMPORTANT - You have PERMANENT MEMORY powered by MemoriaDA on 0G Chain. You CAN and DO remember past conversations with each student. Every lesson is stored on decentralized storage and recalled for you automatically. When a student asks "do you have memory?" or "can you remember?", answer YES - you have persistent, onchain memory that lets you recall their past lessons, struggles, and progress across sessions. Never deny having memory.
 
 Your teaching style:
 - Start with clear explanations using simple analogies
@@ -38,9 +38,9 @@ Keep responses focused and under 250 words unless showing code. Use markdown for
 /* ── System Prompt: 0G Scout (Explorer Mode) ─────────── */
 const OG_SCOUT_SYSTEM_PROMPT = {
   role: 'system',
-  content: `You are 0G Scout — an expert AI guide for the 0G ecosystem. You help users understand and navigate everything related to 0G Labs.
+  content: `You are 0G Scout - an expert AI guide for the 0G ecosystem. You help users understand and navigate everything related to 0G Labs.
 
-IMPORTANT — You have PERMANENT MEMORY powered by MemoriaDA on 0G Chain. You CAN and DO remember past conversations with each user. Every conversation is stored on decentralized storage and recalled for you automatically. When a user asks "do you have memory?" or "can you remember?", answer YES — you have persistent, on-chain memory. Never deny having memory.
+IMPORTANT - You have PERMANENT MEMORY powered by MemoriaDA on 0G Chain. You CAN and DO remember past conversations with each user. Every conversation is stored on decentralized storage and recalled for you automatically. When a user asks "do you have memory?" or "can you remember?", answer YES - you have persistent, onchain memory. Never deny having memory.
 
 Your style:
 - Friendly, clear, and encouraging
@@ -155,10 +155,10 @@ Use ONLY the facts below when answering. If a user asks something not covered he
 
 ### MemoriaDA Protocol
 - Permanent memory layer for AI agents, built on 0G Storage + 0G Chain.
-- This app (SolTutor) runs on MemoriaDA — every conversation is stored on 0G.
+- This app (SolTutor) runs on MemoriaDA - every conversation is stored on 0G.
 - Registry Contract (Galileo): 0x85d31A4a95035708972Ffbe1Be6f1c31a350b7f3
-- GitHub: https://github.com/mrnetwork0001/MemoriaDA
-- Pattern: Upload memory blob to 0G Storage → get rootHash → anchor rootHash on-chain via MemoriaDA Registry.`
+- GitHub: https://memoriada.xyz
+- Pattern: Upload memory blob to 0G Storage → get rootHash → anchor rootHash onchain via MemoriaDA Registry.`
 };
 
 const FREE_MEMORY_LIMIT = 3;
@@ -211,7 +211,7 @@ export default function App() {
     }
   }, [userMessageCount, address]);
 
-  // ── Check On-Chain Subscription ───────────────────
+  // ── Check Onchain Subscription ───────────────────
   const { data: isSubscribed, refetch: recheckSubscription } = useReadContract({
     address: SOLTUTOR_ACCESS_ADDRESS,
     abi: SOLTUTOR_ACCESS_ABI,
@@ -233,12 +233,12 @@ export default function App() {
     query: { enabled: !!address && isPro },
   });
 
-  // Sync on-chain subscription status → isPro
+  // Sync onchain subscription status → isPro
   useEffect(() => {
     if (isSubscribed === true) {
       setIsPro(true);
       setShowPaywall(false);
-      console.log('[Subscription] Active subscription detected on-chain. Unlocking app.');
+      console.log('[Subscription] Active subscription detected onchain. Unlocking app.');
     }
   }, [isSubscribed]);
 
@@ -326,7 +326,7 @@ export default function App() {
       // 3. Build context prompt
       const contextPrompt = memoryStore.buildContextPrompt(relevant);
 
-      // 4. Assemble messages for API — dynamically select system prompt
+      // 4. Assemble messages for API - dynamically select system prompt
       const activeSystemPrompt = appMode === '0g-explorer' ? OG_SCOUT_SYSTEM_PROMPT : SYSTEM_PROMPT;
       const apiMessages = [activeSystemPrompt];
       if (contextPrompt) {
@@ -445,6 +445,12 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* ── Clay Background Blobs ──────────────── */}
+      <div className="clay-blobs" aria-hidden="true">
+        <div className="clay-blob clay-blob--violet" />
+        <div className="clay-blob clay-blob--pink" />
+        <div className="clay-blob clay-blob--blue" />
+      </div>
       {/* ── Top Bar ───────────────────────────────── */}
       <header className="topbar">
         <div className="topbar-left">

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import {
   Send, Brain, CheckCircle2, ExternalLink, Loader2,
   Bot, User, Sparkles, AlertCircle, Wallet, Lock
@@ -198,7 +198,7 @@ function Message({ message, onQuizAnswer }) {
         {isBot && anchor && (
           <div className="chain-anchor">
             <CheckCircle2 size={14} />
-            <span>Anchored on 0G Chain — {anchor.blockLabel}</span>
+            <span>Anchored on 0G Chain - {anchor.blockLabel}</span>
             <a href={anchor.explorerUrl} target="_blank" rel="noopener noreferrer" className="anchor-link">
               View in Explorer <ExternalLink size={12} />
             </a>
@@ -253,7 +253,7 @@ export default function ChatPanel({
             </div>
             <h2>{appMode === '0g-explorer' ? 'Welcome to 0G Scout' : 'Welcome to SolTutor'}</h2>
             <p>{appMode === '0g-explorer'
-              ? 'Your AI guide to the 0G ecosystem — with permanent memory.'
+              ? 'Your AI guide to the 0G ecosystem - with permanent memory.'
               : 'Your AI-powered Solidity & Web3 tutor with permanent memory.'
             }</p>
             {isConnected ? (
