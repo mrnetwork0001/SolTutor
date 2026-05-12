@@ -14,8 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'dummy',
-  baseURL: process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1',
+  apiKey: process.env.ZG_CHAT_API_KEY || 'dummy',
+  baseURL: process.env.ZG_CHAT_BASE_URL || 'https://router-api-testnet.integratenetwork.work/v1',
 });
 
 const AGENT_ID = 'soltutor_agent_v1';
@@ -37,7 +37,7 @@ app.post('/api/chat', async (req, res) => {
     if (!messages) return res.status(400).json({ error: 'messages required' });
 
     const completion = await openai.chat.completions.create({
-      model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+      model: process.env.ZG_CHAT_MODEL || 'qwen/qwen-2.5-7b-instruct',
       messages,
       max_tokens: 800,
       temperature: 0.7,
