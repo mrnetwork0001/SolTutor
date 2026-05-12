@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Activity, Wifi, WifiOff, Zap } from 'lucide-react';
+import { Activity, Wifi, WifiOff, Zap, Menu, X } from 'lucide-react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useReadContract } from 'wagmi';
 import LandingPage from './components/LandingPage';
@@ -172,6 +172,7 @@ export default function App() {
   const [backendOnline, setBackendOnline] = useState(false);
   const [isPro, setIsPro] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [appMode, setAppMode] = useState('solidity'); // 'solidity' | '0g-explorer'
   const [completedTopics, setCompletedTopics] = useState(() => {
     try {
@@ -454,6 +455,9 @@ export default function App() {
       {/* ── Top Bar ───────────────────────────────── */}
       <header className="topbar">
         <div className="topbar-left">
+          <button className="topbar-hamburger" onClick={() => setMobileMenuOpen(p => !p)} aria-label="Toggle menu">
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
           <button className="topbar-brand-btn" onClick={() => setShowApp(false)}>
             <span className="topbar-title">
               {appMode === '0g-explorer' ? '🔭 0G Scout' : '🎓 SolTutor'}
@@ -492,9 +496,11 @@ export default function App() {
 
       {/* ── Main Layout ──────────────────────────── */}
       <div className="app-layout">
+        {/* Mobile sidebar backdrop */}
+        {mobileMenuOpen && <div className="sidebar-backdrop" onClick={() => setMobileMenuOpen(false)} />}
         <Sidebar
           currentTopic={currentTopic}
-          onTopicSelect={handleTopicSelect}
+          onTopicSelect={(t) => { handleTopicSelect(t); setMobileMenuOpen(false); }}
           memoryCount={globalMemoryCount}
           userMessageCount={userMessageCount}
           lessonsCompleted={completedTopics.length}
@@ -506,7 +512,8 @@ export default function App() {
           timeLeft={timeLeft}
           walletAddress={address}
           appMode={appMode}
-          onModeChange={handleModeChange}
+          onModeChange={(m) => { handleModeChange(m); setMobileMenuOpen(false); }}
+          mobileOpen={mobileMenuOpen}
         />
         <main className="main-content">
           <ChatPanel

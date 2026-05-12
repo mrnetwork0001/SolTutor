@@ -171,6 +171,7 @@ export default function Sidebar({
   userMessageCount,
   appMode,
   onModeChange,
+  mobileOpen,
 }) {
   const [expandedTopics, setExpandedTopics] = useState(true);
 
@@ -179,7 +180,7 @@ export default function Sidebar({
   const completedCount = lessonsCompleted || 0;
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${mobileOpen ? 'sidebar--open' : ''}`}>
       {/* ── Logo ──────────────────────────────────── */}
       <div className="sidebar-logo">
         <div className="sidebar-logo-icon">
