@@ -500,7 +500,7 @@ export default function App() {
         {mobileMenuOpen && <div className="sidebar-backdrop" onClick={() => setMobileMenuOpen(false)} />}
         <Sidebar
           currentTopic={currentTopic}
-          onTopicSelect={(t) => { handleTopicSelect(t); setMobileMenuOpen(false); }}
+          onTopicSelect={(id, prompt) => { handleTopicSelect(id, prompt); setMobileMenuOpen(false); }}
           memoryCount={globalMemoryCount}
           userMessageCount={userMessageCount}
           lessonsCompleted={completedTopics.length}
