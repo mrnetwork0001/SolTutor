@@ -101,11 +101,26 @@ app.post('/api/memory/store', async (req, res) => {
   }
 });
 
+// ── Serve Frontend (production) ─────────────────────────
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distPath = path.join(__dirname, '..', 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.use((req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+  console.log('[SolTutor] Serving frontend from /dist');
+}
+
 // ── Start ───────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log('');
   console.log('═══════════════════════════════════════════');
-  console.log('  SOLTUTOR — Solidity Tutor Backend');
+  console.log('  SOLTUTOR - Solidity Tutor Backend');
   console.log('  Powered by MemoriaDA Protocol');
   console.log('═══════════════════════════════════════════');
   console.log(`  Listening: http://localhost:${PORT}`);
