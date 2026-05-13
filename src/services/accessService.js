@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // SolTutor - Access Service (Frontend Contract Interaction)
 // Reads subscription status from SolTutorAccess contract
 // ============================================================
@@ -46,7 +46,7 @@ export const SOLTUTOR_ACCESS_ABI = [
 
 /* ── Contract Address ─────────────────────────────── */
 // This will be set after deployment. Update with actual deployed address.
-export const SOLTUTOR_ACCESS_ADDRESS = '0x2AE191e794F00920383471A8d8b12b696147b659';
+export const SOLTUTOR_ACCESS_ADDRESS = '0x3D078d15B4dF4Bc3d5D048444A82875BE511011d';
 
 /* ── Subscription Price (matches contract default) ── */
 export const SUBSCRIPTION_PRICE = parseEther('1'); // 1 A0GI

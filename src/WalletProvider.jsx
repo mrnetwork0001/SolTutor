@@ -1,5 +1,5 @@
-﻿// ============================================================
-// SolTutor - Wallet Provider (RainbowKit + 0G Galileo Testnet)
+// ============================================================
+// SolTutor - Wallet Provider (RainbowKit + 0G Mainnet)
 // ============================================================
 
 import '@rainbow-me/rainbowkit/styles.css';
@@ -8,29 +8,29 @@ import { getDefaultConfig, RainbowKitProvider, lightTheme } from '@rainbow-me/ra
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-/* ── 0G Galileo Testnet Chain Definition ──────────── */
-export const zeroGGalileo = {
-  id: 16602,
-  name: '0G-Galileo',
+/* ── 0G Mainnet Chain Definition ─────────────────── */
+export const zeroGMainnet = {
+  id: 16661,
+  name: '0G-Mainnet',
   nativeCurrency: {
     decimals: 18,
     name: 'A0GI',
     symbol: 'A0GI',
   },
   rpcUrls: {
-    default: { http: ['https://evmrpc-testnet.0g.ai'] },
+    default: { http: ['https://evmrpc.0g.ai'] },
   },
   blockExplorers: {
-    default: { name: '0G Explorer', url: 'https://chainscan-galileo.0g.ai' },
+    default: { name: '0G Explorer', url: 'https://chainscan.0g.ai' },
   },
-  testnet: true,
+  testnet: false,
 };
 
 /* ── RainbowKit Config ────────────────────────────── */
 const config = getDefaultConfig({
   appName: 'SolTutor',
   projectId: 'soltutor-demo-00000000', // WalletConnect project ID (placeholder for testnet)
-  chains: [zeroGGalileo],
+  chains: [zeroGMainnet],
 });
 
 const queryClient = new QueryClient();

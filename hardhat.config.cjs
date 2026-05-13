@@ -11,5 +11,12 @@ module.exports = {
       chainType: 'l1',
       accounts: [process.env.ZG_PRIVATE_KEY],
     },
+    zgMainnet: {
+      type: 'http',
+      url: 'https://evmrpc.0g.ai',
+      chainId: 16661,
+      chainType: 'l1',
+      accounts: [process.env.ZG_PRIVATE_KEY],
+    },
   },
 };
