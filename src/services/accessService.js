@@ -48,9 +48,9 @@ export const SOLTUTOR_ACCESS_ABI = [
 // This will be set after deployment. Update with actual deployed address.
 export const SOLTUTOR_ACCESS_ADDRESS = '0x3D078d15B4dF4Bc3d5D048444A82875BE511011d';
 
-/* ── Subscription Price (matches contract default) ── */
-export const SUBSCRIPTION_PRICE = parseEther('1'); // 1 A0GI
-export const SUBSCRIPTION_PRICE_DISPLAY = '1 A0GI';
+/* ── Subscription Price (matches contract on-chain) ── */
+export const SUBSCRIPTION_PRICE = parseEther('0.1'); // 0.1 0G
+export const SUBSCRIPTION_PRICE_DISPLAY = '0.1 0G';
 export const SUBSCRIPTION_DURATION_DISPLAY = '30 days';
 
 /**
