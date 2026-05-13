@@ -13,6 +13,7 @@ import {
   SOLTUTOR_ACCESS_ADDRESS,
   formatTimeRemaining,
 } from './services/accessService';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
 /* ── System Prompt: SolTutor (Solidity Mode) ─────────── */
@@ -164,7 +165,7 @@ Use ONLY the facts below when answering. If a user asks something not covered he
 const FREE_MEMORY_LIMIT = 3;
 
 export default function App() {
-  const [showApp, setShowApp] = useState(false);
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [currentTopic, setCurrentTopic] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -439,103 +440,103 @@ export default function App() {
     setShowPaywall(false);
   }, []);
 
-  // ── Landing → App transition ─────────────────────
-  if (!showApp) {
-    return <LandingPage onLaunch={() => setShowApp(true)} />;
-  }
-
   return (
-    <div className="app">
-      {/* ── Clay Background Blobs ──────────────── */}
-      <div className="clay-blobs" aria-hidden="true">
-        <div className="clay-blob clay-blob--violet" />
-        <div className="clay-blob clay-blob--pink" />
-        <div className="clay-blob clay-blob--blue" />
-      </div>
-      {/* ── Top Bar ───────────────────────────────── */}
-      <header className="topbar">
-        <div className="topbar-left">
-          <button className="topbar-hamburger" onClick={() => setMobileMenuOpen(p => !p)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-          <button className="topbar-brand-btn" onClick={() => setShowApp(false)}>
-            <span className="topbar-title">
-              {appMode === '0g-explorer' ? '🔭 0G Scout' : '🎓 SolTutor'}
-            </span>
-          </button>
-          <span className="topbar-divider">|</span>
-          <span className="topbar-subtitle">
-            {appMode === '0g-explorer' ? '0G Ecosystem Explorer' : 'AI Solidity Tutor'}
-          </span>
-        </div>
-        <div className="topbar-right">
-          <div className={`topbar-status ${backendOnline ? 'online' : 'offline'}`}>
-            {backendOnline ? <Wifi size={14} /> : <WifiOff size={14} />}
-            <span>{backendOnline ? '0G Active' : 'Offline'}</span>
+    <Routes>
+      <Route path="/" element={<LandingPage onLaunch={() => navigate('/app')} />} />
+      <Route path="/app" element={
+        <div className="app">
+          {/* ── Clay Background Blobs ──────────────── */}
+          <div className="clay-blobs" aria-hidden="true">
+            <div className="clay-blob clay-blob--violet" />
+            <div className="clay-blob clay-blob--pink" />
+            <div className="clay-blob clay-blob--blue" />
           </div>
-          {isPro && (
-            <div className="topbar-badge pro-badge">
-              <Zap size={12} fill="currentColor" />
-              <span>NEURAL LINK ON</span>
+          {/* ── Top Bar ───────────────────────────────── */}
+          <header className="topbar">
+            <div className="topbar-left">
+              <button className="topbar-hamburger" onClick={() => setMobileMenuOpen(p => !p)} aria-label="Toggle menu">
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+              <button className="topbar-brand-btn" onClick={() => navigate('/')}>
+                <span className="topbar-title">
+                  {appMode === '0g-explorer' ? '🔭 0G Scout' : '🎓 SolTutor'}
+                </span>
+              </button>
+              <span className="topbar-divider">|</span>
+              <span className="topbar-subtitle">
+                {appMode === '0g-explorer' ? '0G Ecosystem Explorer' : 'AI Solidity Tutor'}
+              </span>
             </div>
-          )}
-          <div className="topbar-network">
-            <Activity size={14} />
-            <span>Galileo Testnet</span>
-          </div>
-          {/* ── RainbowKit Connect Button ──────── */}
-          <div className="topbar-connect">
-            <ConnectButton
-              chainStatus="icon"
-              accountStatus="avatar"
-              showBalance={false}
+            <div className="topbar-right">
+              <div className={`topbar-status ${backendOnline ? 'online' : 'offline'}`}>
+                {backendOnline ? <Wifi size={14} /> : <WifiOff size={14} />}
+                <span>{backendOnline ? '0G Active' : 'Offline'}</span>
+              </div>
+              {isPro && (
+                <div className="topbar-badge pro-badge">
+                  <Zap size={12} fill="currentColor" />
+                  <span>NEURAL LINK ON</span>
+                </div>
+              )}
+              <div className="topbar-network">
+                <Activity size={14} />
+                <span>Galileo Testnet</span>
+              </div>
+              {/* ── RainbowKit Connect Button ──────── */}
+              <div className="topbar-connect">
+                <ConnectButton
+                  chainStatus="icon"
+                  accountStatus="avatar"
+                  showBalance={false}
+                />
+              </div>
+            </div>
+          </header>
+
+          {/* ── Main Layout ──────────────────────────── */}
+          <div className="app-layout">
+            {/* Mobile sidebar backdrop */}
+            {mobileMenuOpen && <div className="sidebar-backdrop" onClick={() => setMobileMenuOpen(false)} />}
+            <Sidebar
+              currentTopic={currentTopic}
+              onTopicSelect={(id, prompt) => { handleTopicSelect(id, prompt); setMobileMenuOpen(false); }}
+              memoryCount={globalMemoryCount}
+              userMessageCount={userMessageCount}
+              lessonsCompleted={completedTopics.length}
+              isPro={isPro}
+              freeLimit={FREE_MEMORY_LIMIT}
+              isLocked={isLocked}
+              isConnected={isConnected}
+              onShowPaywall={() => setShowPaywall(true)}
+              timeLeft={timeLeft}
+              walletAddress={address}
+              appMode={appMode}
+              onModeChange={(m) => { handleModeChange(m); setMobileMenuOpen(false); }}
+              mobileOpen={mobileMenuOpen}
             />
+            <main className="main-content">
+              <ChatPanel
+                messages={messages}
+                onSend={handleSend}
+                loading={loading}
+                onQuizAnswer={handleQuizAnswer}
+                isLocked={isLocked}
+                isConnected={isConnected}
+                appMode={appMode}
+              />
+            </main>
           </div>
+
+          {/* ── Paywall Modal ────────────────────────── */}
+          {showPaywall && (
+            <PaywallModal
+              memoryCount={userMessageCount}
+              freeLimit={FREE_MEMORY_LIMIT}
+              onUpgradeComplete={handleUpgradeComplete}
+            />
+          )}
         </div>
-      </header>
-
-      {/* ── Main Layout ──────────────────────────── */}
-      <div className="app-layout">
-        {/* Mobile sidebar backdrop */}
-        {mobileMenuOpen && <div className="sidebar-backdrop" onClick={() => setMobileMenuOpen(false)} />}
-        <Sidebar
-          currentTopic={currentTopic}
-          onTopicSelect={(id, prompt) => { handleTopicSelect(id, prompt); setMobileMenuOpen(false); }}
-          memoryCount={globalMemoryCount}
-          userMessageCount={userMessageCount}
-          lessonsCompleted={completedTopics.length}
-          isPro={isPro}
-          freeLimit={FREE_MEMORY_LIMIT}
-          isLocked={isLocked}
-          isConnected={isConnected}
-          onShowPaywall={() => setShowPaywall(true)}
-          timeLeft={timeLeft}
-          walletAddress={address}
-          appMode={appMode}
-          onModeChange={(m) => { handleModeChange(m); setMobileMenuOpen(false); }}
-          mobileOpen={mobileMenuOpen}
-        />
-        <main className="main-content">
-          <ChatPanel
-            messages={messages}
-            onSend={handleSend}
-            loading={loading}
-            onQuizAnswer={handleQuizAnswer}
-            isLocked={isLocked}
-            isConnected={isConnected}
-            appMode={appMode}
-          />
-        </main>
-      </div>
-
-      {/* ── Paywall Modal ────────────────────────── */}
-      {showPaywall && (
-        <PaywallModal
-          memoryCount={userMessageCount}
-          freeLimit={FREE_MEMORY_LIMIT}
-          onUpgradeComplete={handleUpgradeComplete}
-        />
-      )}
-    </div>
+      } />
+    </Routes>
   );
 }
