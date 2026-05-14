@@ -318,7 +318,7 @@ Every memory is verified on-chain:
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -327,7 +327,7 @@ Every memory is verified on-chain:
 | **Wallet** | RainbowKit v2, wagmi v2, viem |
 | **Styling** | Vanilla CSS (claymorphism design system) |
 | **Backend** | Express.js 5, Node.js 22+ |
-| **AI** | OpenAI GPT-4o-mini (configurable) |
+| **AI** | 0GM-1.0-35B-A3B (configurable) |
 | **Storage** | 0G Storage (decentralized blobs) |
 | **Smart Contract** | Solidity 0.8.20, Hardhat v3 |
 | **Memory Protocol** | MemoriaDA (0G-native) |
