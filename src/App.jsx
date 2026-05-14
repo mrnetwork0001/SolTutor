@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Activity, Wifi, WifiOff, Zap, Menu, X } from 'lucide-react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useReadContract } from 'wagmi';
+import { useAccount, useReadContract, useSwitchChain } from 'wagmi';
 import LandingPage from './components/LandingPage';
 import Sidebar from './components/Sidebar';
 import ChatPanel from './components/ChatPanel';
@@ -185,7 +185,16 @@ export default function App() {
   messagesRef.current = messages;
 
   // ── Wallet State ──────────────────────────────────
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, chain } = useAccount();
+  const { switchChain } = useSwitchChain();
+
+  // ── Auto-switch to 0G Mainnet ─────────────────────
+  useEffect(() => {
+    // If connected but on the wrong chain, prompt to switch
+    if (isConnected && chain && chain.id !== 16661 && switchChain) {
+      switchChain({ chainId: 16661 });
+    }
+  }, [isConnected, chain, switchChain]);
 
   // ── Per-wallet message count (localStorage-backed) ─
   const getWalletKey = (addr) => `soltutor_msg_${addr?.toLowerCase()}`;
@@ -480,7 +489,7 @@ export default function App() {
               )}
               <div className="topbar-network">
                 <Activity size={14} />
-                <span>Galileo Testnet</span>
+                <span>{isConnected && chain ? chain.name : 'Galileo Testnet'}</span>
               </div>
               {/* ── RainbowKit Connect Button ──────── */}
               <div className="topbar-connect">

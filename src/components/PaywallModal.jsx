@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // SolTutor - Paywall Modal
 // Full-screen lock when free memory limit reached.
 // Two-step flow: Connect Wallet → Pay to Subscribe
@@ -20,7 +20,7 @@ import {
 } from '../services/accessService';
 
 export default function PaywallModal({ memoryCount, freeLimit, onUpgradeComplete }) {
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, chain } = useAccount();
   const [step, setStep] = useState('pay'); // Wallet already connected at this point
   const [errorMsg, setErrorMsg] = useState('');
   const [checking, setChecking] = useState(false);
@@ -175,7 +175,7 @@ export default function PaywallModal({ memoryCount, freeLimit, onUpgradeComplete
                 <span>Connect Your Wallet</span>
               </div>
               <p className="paywall-step-desc">
-                Connect to 0G Galileo Testnet to proceed with subscription.
+                Connect to {chain ? chain.name : '0G Galileo Testnet'} to proceed with subscription.
               </p>
               <div className="paywall-connect-wrapper">
                 <ConnectButton />
@@ -251,7 +251,7 @@ export default function PaywallModal({ memoryCount, freeLimit, onUpgradeComplete
               <p>Confirming transaction on 0G Chain</p>
               {txHash && (
                 <a
-                  href={`https://chainscan-galileo.0g.ai/tx/${txHash}`}
+                  href={`${chain?.blockExplorers?.default?.url || 'https://chainscan-galileo.0g.ai'}/tx/${txHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="paywall-tx-link"
