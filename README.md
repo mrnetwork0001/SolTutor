@@ -47,6 +47,29 @@ SolTutor was designed and built by the **MemoriaDA** core team as a **first-part
 
 ---
 
+## 🏆 Hackathon Judging Guide
+
+This section is explicitly provided to assist judges in evaluating the SolTutor submission for the 0G Aristotle Mainnet Hackathon.
+
+### 🧩 0G Modules Used
+1. **0G Storage**
+2. **0G Chain (Aristotle Mainnet)**
+
+### 💡 How These Modules Support the Product
+* **0G Storage**: Acts as the decentralized "brain" for the AI tutor. Every time a user interacts with the AI, the conversation is embedded and uploaded as a blob to 0G Storage. This ensures that the AI's memory is permanent, decentralized, and immune to server wipes.
+* **0G Chain (Aristotle Mainnet)**: Serves two critical functions:
+  1. **Subscription Gating**: The `SolTutorAccess.sol` smart contract is deployed directly on the 0G Chain. It handles decentralized subscription payments (0.1 A0GI for 30 days) and on-chain access verification.
+  2. **Memory Anchoring**: The Merkle root hash of every memory blob uploaded to 0G Storage is anchored on the 0G Chain via the MemoriaDA Registry contract, guaranteeing that the learning history is immutable and publicly verifiable.
+
+### 🧪 Reviewer Notes & Testing Instructions
+* **Live Testing**: You can evaluate the live production application at [soltutor.memoriada.xyz](https://soltutor.memoriada.xyz).
+* **No Initial Funds Required**: Every new wallet connected receives **3 FREE messages**. This allows judges to test the AI tutor, verify the 0G memory storage flow, and see the on-chain anchoring without needing any mainnet A0GI tokens.
+* **Network Setup**: Ensure your wallet (e.g., MetaMask) is connected to the **0G Aristotle Mainnet** (Chain ID: `16661`, RPC: `https://evmrpc.0g.ai`). The application will automatically prompt you to add or switch to this network upon connecting.
+* **Testing the Paywall**: Once the 3 free messages are exhausted, a paywall will appear. To proceed, a user requires 0.1 A0GI on the mainnet. If you wish to continue testing without subscribing, simply connect a different wallet address to receive a fresh set of free messages.
+* **Local Reproduction**: Detailed instructions to spin up the entire stack locally are provided in the *Getting Started* section below.
+
+---
+
 ## 🏗 Architecture
 
 ```
