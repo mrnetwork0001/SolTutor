@@ -1,67 +1,69 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/0G%20Chain-Aristotle%20Mainnet-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/MemoriaDA-Protocol-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Solidity-0.8.20-gray?style=for-the-badge&logo=solidity" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
+</p>
 
+# 🎓 SolTutor — AI Solidity Tutor with Permanent Memory
 
-# SolTutor - AI Solidity Tutor with Permanent Memory
-
----
-
-<img width="1878" height="961" alt="14 05 2026_16 35 21_REC" src="https://github.com/user-attachments/assets/e0bb5c09-1cbd-460e-9709-214afd16fde5" />
-
-
-> **Learn Solidity with an AI that never forgets.** Every lesson is permanently stored on the **0G decentralized network** via the **MemoriaDA Protocol** - so your tutor recalls past conversations, mistakes, and breakthroughs across sessions.
+> **Learn Solidity with an AI that never forgets.** Every lesson is permanently stored on the **0G decentralized network** via the **MemoriaDA Protocol** — so your tutor recalls past conversations, mistakes, and breakthroughs across sessions.
 
 SolTutor is a full-stack Web3 education dApp that combines AI-powered tutoring with decentralized persistent memory and on-chain subscription management. **Built by the MemoriaDA team** as a flagship integration to demonstrate how any AI application can gain permanent, verifiable memory using the MemoriaDA infrastructure.
 
 > [!IMPORTANT]
 > **SolTutor is live on 0G Aristotle Mainnet.** All memory anchoring, subscription payments, and agent registration run on the production network.
 >
-> **Live App:** [soltutor.memoriada.xyz](https://soltutor.memoriada.xyz)
+> 🔗 **Live App:** [soltutor.memoriada.xyz](https://soltutor.memoriada.xyz)
 
 ---
 
-## Built by the MemoriaDA Team
+## 🧬 Built by the MemoriaDA Team
 
-SolTutor was designed and built by the **MemoriaDA** core team as a **first-party reference application** - proving that the MemoriaDA protocol is production-ready infrastructure for any AI agent that needs persistent, decentralized memory.
+SolTutor was designed and built by the **MemoriaDA** core team as a **first-party reference application** — proving that the MemoriaDA protocol is production-ready infrastructure for any AI agent that needs persistent, decentralized memory.
 
 | | |
 |---|---|
-| **Why we built it** | To show that any developer can integrate MemoriaDA into a real product in days - not months. SolTutor went from zero to mainnet with full memory persistence, onchain anchoring, and subscription gating. |
+| **Why we built it** | To show that any developer can integrate MemoriaDA into a real product in days — not months. SolTutor went from zero to mainnet with full memory persistence, on-chain anchoring, and subscription gating. |
 | **What it proves** | MemoriaDA handles the entire memory lifecycle: blob upload to 0G Storage → Merkle root anchoring on 0G Chain → semantic recall across sessions. Developers don't need to build any of this themselves. |
-| **Protocol used** | [MemoriaDA Protocol](https://memoriada.xyz) - the universal memory layer for AI agents on 0G |
+| **Protocol used** | [MemoriaDA Protocol](https://memoriada.xyz) — the universal memory layer for AI agents on 0G |
 | **Registry contract** | [`0xD896D59583C137D6ca2c5e3add025e143eD1030d`](https://chainscan.0g.ai/address/0xD896D59583C137D6ca2c5e3add025e143eD1030d) on 0G Mainnet |
 
 > If you're building an AI agent and want it to **remember everything**, MemoriaDA is the infrastructure you need. SolTutor is the proof.
 
 ---
 
-## Key Features
+## ✨ Key Features
 
 | Feature | Description |
 |---|---|
-| **Persistent AI Memory** | Every conversation is embedded, stored on 0G Storage, and anchored on-chain via MemoriaDA. The tutor recalls your past lessons. |
-| **Dual Mode** | Toggle between **SolTutor** (Solidity tutor) and **0G Scout** (0G ecosystem explorer) - two AI agents sharing one permanent memory brain. |
-| **OnChain Subscriptions** | Monthly subscription (0.1 0G / 30 days) managed by a smart contract. No centralized payment - just wallet + blockchain. |
-| **Wallet-First UX** | RainbowKit wallet connection required to start. Each wallet gets 3 free trial messages before subscription is required. |
-| **20 Curated Tracks** | 10 Solidity tracks (basics to DeFi) + 10 0G ecosystem topics - structured paths with AI-generated quizzes. |
-| **OnChain Verification** | Every memory anchored with a block number + explorer link. Fully verifiable learning history. |
-| **Claymorphism UI** | Modern claymorphism design with smooth animations, code syntax highlighting, and responsive layout. |
+| **🧠 Persistent AI Memory** | Every conversation is embedded, stored on 0G Storage, and anchored on-chain via MemoriaDA. The tutor recalls your past lessons. |
+| **🔭 Dual Mode** | Toggle between **SolTutor** (Solidity tutor) and **0G Scout** (0G ecosystem explorer) — two AI agents sharing one permanent memory brain. |
+| **💎 On-Chain Subscriptions** | Monthly subscription (0.1 0G / 30 days) managed by a smart contract. No centralized payment — just wallet + blockchain. |
+| **🔐 Wallet-First UX** | RainbowKit wallet connection required to start. Each wallet gets 3 free trial messages before subscription is required. |
+| **📚 20 Curated Tracks** | 10 Solidity tracks (basics to DeFi) + 10 0G ecosystem topics — structured paths with AI-generated quizzes. |
+| **⚡ On-Chain Verification** | Every memory anchored with a block number + explorer link. Fully verifiable learning history. |
+| **🎨 Claymorphism UI** | Modern claymorphism design with smooth animations, code syntax highlighting, and responsive layout. |
 
 ---
 
-## Hackathon Judging Guide
+## 🏆 Hackathon Judging Guide
 
 This section is explicitly provided to assist judges in evaluating the SolTutor submission for the 0G Aristotle Mainnet Hackathon.
 
-### 0G Modules Used
+### 🧩 0G Modules Used
 1. **0G Storage**
 2. **0G Chain (Aristotle Mainnet)**
+3. **0G Compute**
 
-### How These Modules Support the Product
+### 💡 How These Modules Support the Product
 * **0G Storage**: Acts as the decentralized "brain" for the AI tutor. Every time a user interacts with the AI, the conversation is embedded and uploaded as a blob to 0G Storage. This ensures that the AI's memory is permanent, decentralized, and immune to server wipes.
 * **0G Chain (Aristotle Mainnet)**: Serves two critical functions:
-  1. **Subscription Gating**: The `SolTutorAccess.sol` smart contract is deployed directly on the 0G Chain. It handles decentralized subscription payments (0.1 0G for 30 days) and onchain access verification.
+  1. **Subscription Gating**: The `SolTutorAccess.sol` smart contract is deployed directly on the 0G Chain. It handles decentralized subscription payments (0.1 A0GI for 30 days) and on-chain access verification.
   2. **Memory Anchoring**: The Merkle root hash of every memory blob uploaded to 0G Storage is anchored on the 0G Chain via the MemoriaDA Registry contract, guaranteeing that the learning history is immutable and publicly verifiable.
+* **0G Compute**: AI inference is powered by the 0G Compute Router API using the `0GM-1.0-35B-A3B` model — a 35B-parameter MoE reasoning model hosted entirely on the 0G network. Zero dependency on external AI providers (no OpenAI, no Anthropic). The entire AI stack runs natively on 0G.
 
-### Reviewer Notes & Testing Instructions
+### 🧪 Reviewer Notes & Testing Instructions
 * **Live Testing**: You can evaluate the live production application at [soltutor.memoriada.xyz](https://soltutor.memoriada.xyz).
 * **No Initial Funds Required**: Every new wallet connected receives **3 FREE messages**. This allows judges to test the AI tutor, verify the 0G memory storage flow, and see the on-chain anchoring without needing any mainnet A0GI tokens.
 * **Network Setup**: Ensure your wallet (e.g., MetaMask) is connected to the **0G Aristotle Mainnet** (Chain ID: `16661`, RPC: `https://evmrpc.0g.ai`). The application will automatically prompt you to add or switch to this network upon connecting.
@@ -70,7 +72,7 @@ This section is explicitly provided to assist judges in evaluating the SolTutor 
 
 ---
 
-## Architecture
+## 🏗 Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -94,23 +96,23 @@ This section is explicitly provided to assist judges in evaluating the SolTutor 
 │  (Express.js) │           │  Mainnet            │
 │  PORT: 3003   │           │                     │
 │               │           │  SolTutorAccess.sol │
-│  • /api/chat  │           │  (Subscriptions)    │
-│  • /api/store │           │                     │
-│  • /api/status│           │  MemoriaDA Registry │
-└───────┬───────┘           │  (Memory Anchoring) │
-        │                   └─────────────────────┘
-        ▼
-┌───────────────────────┐
-│  0G Storage Network   │
-│  (Decentralized Blobs)│
-│  Memory data stored   │
-│  permanently on 0G    │
-└───────────────────────┘
+│  • /api/chat  │──────┐    │  (Subscriptions)    │
+│  • /api/store │      │    │                     │
+│  • /api/status│      │    │  MemoriaDA Registry │
+└───────┬───────┘      │    │  (Memory Anchoring) │
+        │              │    └─────────────────────┘
+        ▼              ▼
+┌───────────────┐  ┌────────────────────────┐
+│  0G Storage   │  │  0G Compute            │
+│  (Blobs)      │  │  Router API            │
+│  Memory data  │  │  Model: 0GM-1.0-35B-A3B│
+│  stored on 0G │  │  AI inference on 0G    │
+└───────────────┘  └────────────────────────┘
 ```
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 SolidityTutor/
@@ -149,14 +151,14 @@ SolidityTutor/
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - **Node.js** ≥ 22
 - **MetaMask** or any WalletConnect-compatible wallet
 - **0G Mainnet** 0G tokens
-- **0G API Key** 
+- **0G Compute Router API Key** (get one at [0G Compute](https://router-api.0g.ai))
 
 ### 1. Clone & Install
 
@@ -178,9 +180,9 @@ ZG_NETWORK=mainnet
 # MemoriaDA Registry Contract (deployed on 0G Mainnet)
 MEMORIA_REGISTRY_ADDRESS=0xD896D59583C137D6ca2c5e3add025e143eD1030d
 
-# AI Chat (OpenAI-compatible)
-ZG_CHAT_API_KEY=sk-your-api-key
-ZG_CHAT_BASE_URL=https://router-api.0g.ai/v1/chat/completions
+# AI Inference — 0G Compute Router API
+ZG_CHAT_API_KEY=your-0g-compute-api-key
+ZG_CHAT_BASE_URL=https://router-api.0g.ai/v1
 ZG_CHAT_MODEL=0GM-1.0-35B-A3B
 
 PORT=3003
@@ -213,7 +215,7 @@ npm run dev:all
 
 ---
 
-## Subscription Model
+## 💰 Subscription Model
 
 ### User Flow
 
@@ -221,13 +223,13 @@ npm run dev:all
 Connect Wallet → 3 Free Messages → Paywall → Pay 0.1 0G → 30 Days Unlimited
 ```
 
-1. **Connect** - User connects MetaMask via RainbowKit
-2. **Free Trial** - 3 free messages per wallet (tracked per-wallet in localStorage)
-3. **Paywall** - Full-screen overlay locks the app after free tier
-4. **Subscribe** - 0.1 0G native token payment to the smart contract
-5. **Unlimited** - 30 days of unlimited access; stackable renewals
+1. **Connect** — User connects MetaMask via RainbowKit
+2. **Free Trial** — 3 free messages per wallet (tracked per-wallet in localStorage)
+3. **Paywall** — Full-screen overlay locks the app after free tier
+4. **Subscribe** — 0.1 0G native token payment to the smart contract
+5. **Unlimited** — 30 days of unlimited access; stackable renewals
 
-### Smart Contract - `SolTutorAccess.sol`
+### Smart Contract — `SolTutorAccess.sol`
 
 | Function | Access | Description |
 |---|---|---|
@@ -250,17 +252,17 @@ node scripts/withdraw.mjs
 
 ---
 
-## MemoriaDA Integration
+## 🧠 MemoriaDA Integration
 
 SolTutor uses the **MemoriaDA Protocol** for decentralized, persistent AI memory. This is the same infrastructure available to any developer building AI agents on 0G.
 
 ### How Memory Works
 
 1. **User sends a message** → Backend generates an AI response
-2. **Embedding** - Client-side TF-IDF embedding of the conversation
-3. **Storage** - Conversation text uploaded to **0G Storage** as a blob
-4. **Anchoring** - Root hash anchored on-chain via **MemoriaDA Registry** contract
-5. **Recall** - On subsequent messages, past memories are searched by semantic similarity and injected as context
+2. **Embedding** — Client-side TF-IDF embedding of the conversation
+3. **Storage** — Conversation text uploaded to **0G Storage** as a blob
+4. **Anchoring** — Root hash anchored on-chain via **MemoriaDA Registry** contract
+5. **Recall** — On subsequent messages, past memories are searched by semantic similarity and injected as context
 
 ### Memory Architecture
 
@@ -280,11 +282,31 @@ Every memory is verified on-chain:
 - **Root hash** permanently anchored in MemoriaDA Registry
 - **Data** stored on 0G decentralized storage network
 
-> **For developers:** If you want to add this same memory capability to your AI agent, check out [MemoriaDA](https://memoriada.xyz)- the protocol handles blob upload, Merkle anchoring, and agent registration out of the box.
+> **For developers:** If you want to add this same memory capability to your AI agent, check out [MemoriaDA](https://memoriada.xyz) — the protocol handles blob upload, Merkle anchoring, and agent registration out of the box.
 
 ---
 
-## Learning Tracks
+## 🤖 0G Compute Integration (AI Inference)
+
+All AI chat inference runs through the **0G Compute Router API** — zero dependency on external AI providers.
+
+**Implementation** — [`server/index.js`](./server/index.js)
+- **Endpoint**: `https://router-api.0g.ai/v1` (OpenAI-compatible)
+- **Model**: `0GM-1.0-35B-A3B` — a 35B-parameter Mixture-of-Experts reasoning model hosted on the 0G network
+- **SDK**: Uses the standard `openai` npm package for seamless integration
+- **Fully native to the 0G stack** — no OpenAI, no Anthropic, no external AI dependency
+
+> **🧪 Technical Discovery: 0GM is a Reasoning Model**
+>
+> During integration, we discovered that `0GM-1.0-35B-A3B` operates as a **chain-of-thought reasoning model** (similar architecture to DeepSeek-R1). The model separates its output into two fields:
+> - `reasoning_content` — internal chain-of-thought (hidden from the user)
+> - `content` — the final synthesized answer
+>
+> This means the model *thinks before it responds*, producing higher-quality analysis. Our backend handles both response paths with a graceful fallback: if the model exhausts its token budget on reasoning, we extract the draft answer from the reasoning chain rather than failing.
+
+---
+
+## 📚 Learning Tracks
 
 ### SolTutor Mode (Solidity)
 
@@ -318,7 +340,7 @@ Every memory is verified on-chain:
 
 ---
 
-## Tech Stack
+## 🔧 Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -327,7 +349,7 @@ Every memory is verified on-chain:
 | **Wallet** | RainbowKit v2, wagmi v2, viem |
 | **Styling** | Vanilla CSS (claymorphism design system) |
 | **Backend** | Express.js 5, Node.js 22+ |
-| **AI** | 0GM-1.0-35B-A3B (configurable) |
+| **AI** | 0G Compute Router API — `0GM-1.0-35B-A3B` (35B MoE reasoning model) |
 | **Storage** | 0G Storage (decentralized blobs) |
 | **Smart Contract** | Solidity 0.8.20, Hardhat v3 |
 | **Memory Protocol** | MemoriaDA (0G-native) |
@@ -335,7 +357,7 @@ Every memory is verified on-chain:
 
 ---
 
-## Network Configuration
+## 🌐 Network Configuration
 
 | Parameter | Value |
 |---|---|
@@ -348,10 +370,10 @@ Every memory is verified on-chain:
 
 ---
 
-## Roadmap
+## 🛣 Roadmap
 
-### Completed
-- [x] AI-powered Solidity tutoring with GPT-4o-mini
+### ✅ Completed
+- [x] AI-powered Solidity tutoring via 0G Compute (`0GM-1.0-35B-A3B`)
 - [x] 0G Scout ecosystem explorer mode
 - [x] Persistent memory via MemoriaDA + 0G Storage
 - [x] On-chain subscription management (0.1 0G / 30 days)
@@ -362,8 +384,8 @@ Every memory is verified on-chain:
 - [x] 0G Aristotle Mainnet deployment
 - [x] Custom domain routing (soltutor.memoriada.xyz/app)
 
-### Future
-- [ ] Per-wallet onchain memory indexing
+### 🔮 Future
+- [ ] Per-wallet on-chain memory indexing
 - [ ] Multi-model support (Claude, Gemini, local LLMs)
 - [ ] Interactive code playground (in-browser Solidity compiler)
 - [ ] NFT certificates for completed learning tracks
@@ -372,12 +394,12 @@ Every memory is verified on-chain:
 
 ---
 
-## Security Notes
+## 🔐 Security Notes
 
-- **Developer Pays model** - The server-side wallet pays for 0G Storage fees. Users never need to sign storage transactions.
-- **Subscription funds** - Accumulated in the smart contract. Only the contract owner can withdraw.
-- **Private keys** - Never exposed to the frontend. `ZG_PRIVATE_KEY` is server-side only.
-- **Per-wallet tracking** - Free tier tracked per wallet address in localStorage. Switching wallets resets the counter.
+- **Developer Pays model** — The server-side wallet pays for 0G Storage fees. Users never need to sign storage transactions.
+- **Subscription funds** — Accumulated in the smart contract. Only the contract owner can withdraw.
+- **Private keys** — Never exposed to the frontend. `ZG_PRIVATE_KEY` is server-side only.
+- **Per-wallet tracking** — Free tier tracked per wallet address in localStorage. Switching wallets resets the counter.
 
 ---
 

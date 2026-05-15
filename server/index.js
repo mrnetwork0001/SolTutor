@@ -13,10 +13,17 @@ import OpenAI from 'openai';
 const app = express();
 const PORT = process.env.PORT || 3003;
 
+// AI Client — 0G Compute Router API (OpenAI-compatible)
+const AI_API_KEY = process.env.ZG_CHAT_API_KEY || process.env.OPENAI_API_KEY || 'dummy';
+const AI_BASE_URL = process.env.ZG_CHAT_BASE_URL || process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
+const AI_MODEL = process.env.ZG_CHAT_MODEL || process.env.OPENAI_MODEL || 'gpt-4o-mini';
+
 const openai = new OpenAI({
-  apiKey: process.env.ZG_CHAT_API_KEY || 'dummy',
-  baseURL: process.env.ZG_CHAT_BASE_URL || 'https://router-api-testnet.integratenetwork.work/v1',
+  apiKey: AI_API_KEY,
+  baseURL: AI_BASE_URL,
 });
+
+console.log(`[AI] Using model: ${AI_MODEL} via ${AI_BASE_URL}`);
 
 const AGENT_ID = 'soltutor_agent_v1';
 const FRAMEWORK = 'SolidityTutor';
@@ -36,20 +43,49 @@ app.post('/api/chat', async (req, res) => {
     const { messages } = req.body;
     if (!messages) return res.status(400).json({ error: 'messages required' });
 
+    console.log(`[Chat] Sending to ${AI_MODEL} via ${AI_BASE_URL}...`);
+
     const completion = await openai.chat.completions.create({
-      model: process.env.ZG_CHAT_MODEL || 'qwen/qwen-2.5-7b-instruct',
+      model: AI_MODEL,
       messages,
-      max_tokens: 800,
-      temperature: 0.7,
+      max_tokens: 2048,  // MUST be >= 2048 for reasoning models
+      temperature: 0.8,
     });
 
+    // 0GM is a reasoning model — it puts chain-of-thought into reasoning_content
+    // and the final answer into content. Handle both paths.
+    const choice = completion?.choices?.[0];
+    const content =
+      choice?.message?.content
+      || choice?.text
+      || null;
+
+    if (!content) {
+      // If only reasoning was produced, extract the useful part
+      const reasoning = choice?.message?.reasoning_content;
+      if (reasoning) {
+        console.warn('[Chat] No content but reasoning available — extracting from reasoning');
+        const draftMatch = reasoning.match(/(?:Draft|Final|Response|Answer)[^:]*:\s*([\s\S]+?)(?:\n\n\d\.|\n\n\*\*|$)/i);
+        const extracted = draftMatch ? draftMatch[1].trim() : reasoning.slice(-500).trim();
+        return res.json({
+          content: extracted,
+          model: completion.model || AI_MODEL,
+        });
+      }
+
+      console.error('[Chat] Empty response. Full:', JSON.stringify(completion, null, 2));
+      return res.status(502).json({ error: 'AI returned an empty response. Please try again.' });
+    }
+
+    console.log(`[Chat] Response OK (${content.length} chars)`);
     res.json({
-      content: completion.choices[0].message.content,
-      model: completion.model,
+      content,
+      model: completion.model || AI_MODEL,
     });
   } catch (err) {
     console.error('[Chat] Error:', err.message);
-    res.status(500).json({ error: err.message });
+    const detail = err?.error?.message || err?.response?.data?.error?.message || err.message || 'Unknown AI error';
+    res.status(500).json({ error: detail });
   }
 });
 

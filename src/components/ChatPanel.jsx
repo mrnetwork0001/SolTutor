@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Send, Brain, CheckCircle2, ExternalLink, Loader2,
   Bot, User, Sparkles, AlertCircle, Wallet, Lock
@@ -140,8 +140,9 @@ function detectQuizOptions(text) {
 function Message({ message, onQuizAnswer }) {
   const { role, content, memoryCount: recalledCount, anchor } = message;
   const isBot = role === 'assistant';
-  const parts = parseMessageContent(content);
-  const quizOptions = isBot ? detectQuizOptions(content) : [];
+  const safeContent = content || '';
+  const parts = parseMessageContent(safeContent);
+  const quizOptions = isBot ? detectQuizOptions(safeContent) : [];
 
   return (
     <div className={`message ${isBot ? 'message-bot' : 'message-user'}`}>
