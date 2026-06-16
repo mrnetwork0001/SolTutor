@@ -61,7 +61,7 @@ This section is explicitly provided to assist judges in evaluating the SolTutor 
 * **0G Chain (Aristotle Mainnet)**: Serves two critical functions:
   1. **Subscription Gating**: The `SolTutorAccess.sol` smart contract is deployed directly on the 0G Chain. It handles decentralized subscription payments (0.1 A0GI for 30 days) and on-chain access verification.
   2. **Memory Anchoring**: The Merkle root hash of every memory blob uploaded to 0G Storage is anchored on the 0G Chain via the MemoriaDA Registry contract, guaranteeing that the learning history is immutable and publicly verifiable.
-* **0G Compute**: AI inference is powered by the 0G Compute Router API using the `0GM-1.0-35B-A3B` model — a 35B-parameter MoE reasoning model hosted entirely on the 0G network. Zero dependency on external AI providers (no OpenAI, no Anthropic). The entire AI stack runs natively on 0G.
+* **0G Compute**: AI inference is powered by the 0G Compute Router API using the `minimax-m3` model hosted entirely on the 0G network. Zero dependency on external AI providers (no OpenAI, no Anthropic). The entire AI stack runs natively on 0G.
 
 ### 🧪 Reviewer Notes & Testing Instructions
 * **Live Testing**: You can evaluate the live production application at [soltutor.memoriada.xyz](https://soltutor.memoriada.xyz).
@@ -105,7 +105,7 @@ This section is explicitly provided to assist judges in evaluating the SolTutor 
 ┌───────────────┐  ┌────────────────────────┐
 │  0G Storage   │  │  0G Compute            │
 │  (Blobs)      │  │  Router API            │
-│  Memory data  │  │  Model: 0GM-1.0-35B-A3B│
+│  Memory data  │  │  Model: minimax-m3     │
 │  stored on 0G │  │  AI inference on 0G    │
 └───────────────┘  └────────────────────────┘
 ```
@@ -183,7 +183,7 @@ MEMORIA_REGISTRY_ADDRESS=0xD896D59583C137D6ca2c5e3add025e143eD1030d
 # AI Inference — 0G Compute Router API
 ZG_CHAT_API_KEY=your-0g-compute-api-key
 ZG_CHAT_BASE_URL=https://router-api.0g.ai/v1
-ZG_CHAT_MODEL=0GM-1.0-35B-A3B
+ZG_CHAT_MODEL=minimax-m3
 
 PORT=3003
 ```
@@ -292,17 +292,17 @@ All AI chat inference runs through the **0G Compute Router API** — zero depend
 
 **Implementation** — [`server/index.js`](./server/index.js)
 - **Endpoint**: `https://router-api.0g.ai/v1` (OpenAI-compatible)
-- **Model**: `0GM-1.0-35B-A3B` — a 35B-parameter Mixture-of-Experts reasoning model hosted on the 0G network
+- **Model**: `minimax-m3` — a model hosted on the 0G network
 - **SDK**: Uses the standard `openai` npm package for seamless integration
 - **Fully native to the 0G stack** — no OpenAI, no Anthropic, no external AI dependency
 
-> **🧪 Technical Discovery: 0GM is a Reasoning Model**
+> **🧪 Technical Discovery: Reasoning Model Compatibility**
 >
-> During integration, we discovered that `0GM-1.0-35B-A3B` operates as a **chain-of-thought reasoning model** (similar architecture to DeepSeek-R1). The model separates its output into two fields:
+> During integration, we discovered that reasoning models on 0G (like `0GM-1.0-35B-A3B`) operate as **chain-of-thought reasoning models** (similar architecture to DeepSeek-R1). They separate output into two fields:
 > - `reasoning_content` — internal chain-of-thought (hidden from the user)
 > - `content` — the final synthesized answer
 >
-> This means the model *thinks before it responds*, producing higher-quality analysis. Our backend handles both response paths with a graceful fallback: if the model exhausts its token budget on reasoning, we extract the draft answer from the reasoning chain rather than failing.
+> Our backend is fully compatible with both standard models (like `minimax-m3`) and reasoning models, handling both response paths with a graceful fallback.
 
 ---
 
@@ -349,7 +349,7 @@ All AI chat inference runs through the **0G Compute Router API** — zero depend
 | **Wallet** | RainbowKit v2, wagmi v2, viem |
 | **Styling** | Vanilla CSS (claymorphism design system) |
 | **Backend** | Express.js 5, Node.js 22+ |
-| **AI** | 0G Compute Router API — `0GM-1.0-35B-A3B` (35B MoE reasoning model) |
+| **AI** | 0G Compute Router API — `minimax-m3` |
 | **Storage** | 0G Storage (decentralized blobs) |
 | **Smart Contract** | Solidity 0.8.20, Hardhat v3 |
 | **Memory Protocol** | MemoriaDA (0G-native) |
@@ -373,7 +373,7 @@ All AI chat inference runs through the **0G Compute Router API** — zero depend
 ## 🛣 Roadmap
 
 ### ✅ Completed
-- [x] AI-powered Solidity tutoring via 0G Compute (`0GM-1.0-35B-A3B`)
+- [x] AI-powered Solidity tutoring via 0G Compute (`minimax-m3`)
 - [x] 0G Scout ecosystem explorer mode
 - [x] Persistent memory via MemoriaDA + 0G Storage
 - [x] On-chain subscription management (0.1 0G / 30 days)

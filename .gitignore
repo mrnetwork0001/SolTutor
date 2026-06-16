@@ -23,3 +23,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Simulation data
+scripts/simulator_memories.json
